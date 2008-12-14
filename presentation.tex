@@ -8,8 +8,11 @@
 
 \usetheme{Pittsburgh}
 
-\author{Silesian Ruby Users' Group}
-\title{Movie Pole}
+\author{Silesian Ruby Users' Group \\[10pt]
+  \footnotesize{Marek Kowalcze \\
+    Jakub Kuźma \\
+    Wojciech Wnętrzak}}
+\title{Movie Pole \\ publiczna filmoteka}
 \setbeamercovered{transparent}
 
 \begin{document}
@@ -42,32 +45,6 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{IMDb - problemy}
-  \begin{itemize}
-  \item brak publicznego API
-  \item konieczność parsowania HTML
-  \item zwracanie danych w przystępnej postaci
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Co chcemy uzyskać?}
-  \input{imdb}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Co chcemy uzyskać? c.d.}
-  \input{fullinformation}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{IMDB::NowPlaying}
-  \begin{footnotesize}
-    \input{nowplaying}
-  \end{footnotesize}
-\end{frame}
-
-\begin{frame}
   \frametitle{Skupmy się na Ruby on Rails}
   \begin{itemize}
   \item baza danych: filmy, torrenty
@@ -95,7 +72,6 @@
   \item tworzenie migracji (pola: tytuł, identyfikator IMDb, liczba
     głosów)
   \item dodanie podstawowych walidacji (tytuł, identyfikator IMDb)
-  \item oczyszczanie tytułu filmu
   \end{itemize}
 \end{frame}
 
@@ -128,7 +104,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Posprzątajmy!}
+  \frametitle{Posprzątajmy trochę!}
   \begin{itemize}
   \item podział widoku (partial ``torrent'')
   \item utworzenie metody pomocniczej imdb\_url
@@ -137,32 +113,101 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Dodatek - komentarze}
+  \frametitle{Udostępnienie kanału RSS}
   \begin{itemize}
-  \item generowanie modelu i migracji
-  \item walidatory
-  \item generowanie kontrolera (akcje new, create)
-  \item zagnieżdżanie zasobów
-  \item prosty formularz i wyświetlanie
-  \item tworzenie layoutu, obsługa flash
+  \item tworzenie widoku
+  \item layout
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{IMDb - problemy}
+  \begin{itemize}
+  \item brak publicznego API
+  \item konieczność parsowania HTML
+  \item zwracanie danych w przystępnej postaci
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Co chcemy uzyskać?}
+  \input{imdb}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Co chcemy uzyskać? c.d.}
+  \input{fullinformation}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{IMDB::NowPlaying}
+  \begin{footnotesize}
+    \input{nowplaying}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Integracja z backendami}
+  \input{loader}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Aplikacja wxRuby}
+  \begin{itemize}
+  \item wykorzystanie dowiązań do wxWidgets
+  \item proste GUI
+  \item wyświetlanie zawartości kanału RSS (FeedNormalizer)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Interfejs - wxGlade}
+  \begin{itemize}
+  \item wzorowany na Glade (GTK+)
+  \item ,,klikane'' tworzenie interfejsu
+  \item eksport do XRC (XML Resource)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Główne okno aplikacji}
+  \begin{tiny}
+    \input{movie_pole_main}
+  \end{tiny}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Uruchamianie aplikacji}
+  \begin{small}
+    \input{movie_pole}
+  \end{small}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Ruby in Shoes}
+  \begin{itemize}
+  \item proste tworzenie kolorowych aplikacji
+  \item wieloplatformowość
+  \item zintegrowane środowisko uruchomieniowe
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Na zakończenie}
   \begin{itemize}
-  \item udostępnienie kanału RSS
-  \item integracja aplikacji z backendami
+  \item http://github.com/ncr/movie\_pole
+  \item http://www.srug.pl/
+  \item spotkania@srug.pl
+  \item http://trix.lighthouseapp.com/projects/20503-movie-pole
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Aplikacja wxRuby}
-  \begin{itemize}
-  \item proste GUI
-  \item wyświetlanie zawartości kanału RSS
-  \item renderowanie HTML-a
-  \end{itemize}
+  \begin{center}
+    \begin{Large}
+      Dziękujemy za wytrwałość!
+    \end{Large}
+  \end{center}
 \end{frame}
 
 \end{document}

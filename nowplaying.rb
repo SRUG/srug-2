@@ -11,8 +11,7 @@ module IMDB
         result[:title] = a.inner_html
         results << result unless result.empty?
       end
-      { :query => { :year => year, :month => month },
-        :results => results }
+      results
     end
   end
 end
