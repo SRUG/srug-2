@@ -1,0 +1,216 @@
+\documentclass[12t]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+\usepackage{graphicx}
+\usepackage{color}
+\input{pygments}
+
+\usetheme{Pittsburgh}
+
+\author{Silesian Ruby Users' Group \\[10pt]
+  \footnotesize{Marek Kowalcze \\
+    Jakub Kuźma \\
+    Wojciech Wnętrzak}}
+\title{Movie Pole \\ publiczna filmoteka}
+\setbeamercovered{transparent}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% nazwiska i adres strony
+
+\begin{frame}[fragile]
+  \frametitle{Sposób na nudę}
+\begin{verbatim}
+10 PRINT "Otwórz http://imdb.com/ lub podobną stronę."
+20 PRINT "Szukaj dobrych filmów do obejrzenia."
+30 PRINT "Otwórz http://mininova.org/ lub podobną."
+40 PRINT "Odszukaj wybrany film."
+50 PRINT "Pobierz film używając wybranego programu p2p."
+60 PRINT "Obejrzyj film."
+70 GOTO 10
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Pomysł}
+  Publiczna filmoteka
+  \begin{itemize}
+  \item wykorzystanie serwisów: IMDb, Mininova, itp.
+  \item aplikacja Ruby on Rails - baza filmów, torrentów, kanał RSS
+  \item klient desktopowy - czytnik RSS
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Skupmy się na Ruby on Rails}
+  \begin{itemize}
+  \item baza danych: filmy, torrenty
+  \item dane dodawane z zewnątrz
+  \item lista filmów
+  \item kanał RSS
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Do dzieła!}
+  \begin{itemize}
+  \item generujemy aplikację
+  \item omówienie struktury
+  \item skrypty (serwer, konsola, generatory)
+  \item zadania Rake
+  \item konfiguracja
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Model Movie}
+  \begin{itemize}
+  \item generowanie modelu
+  \item tworzenie migracji (pola: tytuł, identyfikator IMDb, liczba
+    głosów)
+  \item dodanie podstawowych walidacji (tytuł, identyfikator IMDb)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kontroler Movies}
+  \begin{itemize}
+  \item generowanie kontrolera
+  \item tworzenie akcji index (lista filmów)
+  \item tworzenie akcji show (szczegóły filmu)
+  \item tworzenie ścieżek (routing)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Widoki: index, show}
+  \begin{itemize}
+  \item tworzenie szablonów ERb
+  \item nawigacja pomiędzy widokami
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Torrenty}
+  \begin{itemize}
+  \item tworzenie modelu i migracji
+  \item walidacje (rozmiar pliku)
+  \item dodanie asocjacji z filmami
+  \item uzupełnianie widoków
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Posprzątajmy trochę!}
+  \begin{itemize}
+  \item podział widoku (partial ``torrent'')
+  \item utworzenie metody pomocniczej imdb\_url
+  \item utworzenie metody wypisującej rozmiar in\_megabytes
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Udostępnienie kanału RSS}
+  \begin{itemize}
+  \item tworzenie widoku
+  \item layout
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{IMDb - problemy}
+  \begin{itemize}
+  \item brak publicznego API
+  \item konieczność parsowania HTML
+  \item zwracanie danych w przystępnej postaci
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Co chcemy uzyskać?}
+  \input{imdb}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Co chcemy uzyskać? c.d.}
+  \input{fullinformation}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{IMDB::NowPlaying}
+  \begin{footnotesize}
+    \input{nowplaying}
+  \end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Integracja aplikacji z backendami}
+  \begin{itemize}
+  \item skrypt runner
+  \item uruchamiany z zewnątrz (np. cron)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Aplikacja wxRuby}
+  \begin{itemize}
+  \item wykorzystanie dowiązań do wxWidgets
+  \item proste GUI
+  \item wyświetlanie zawartości kanału RSS (FeedNormalizer)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Interfejs - wxGlade}
+  \begin{itemize}
+  \item wzorowany na Glade (GTK+)
+  \item ,,klikane'' tworzenie interfejsu
+  \item eksport do XRC (XML Resource)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Główne okno aplikacji}
+  \begin{tiny}
+    \input{movie_pole_main}
+  \end{tiny}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Uruchamianie aplikacji}
+  \begin{small}
+    \input{movie_pole}
+  \end{small}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Ruby in Shoes}
+  \begin{itemize}
+  \item proste tworzenie kolorowych aplikacji
+  \item wieloplatformowość
+  \item zintegrowane środowisko uruchomieniowe
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Na zakończenie}
+  \begin{itemize}
+  \item http://github.com/ncr/movie\_pole
+  \item http://www.srug.pl/
+  \item spotkania@srug.pl
+  \item http://trix.lighthouseapp.com/projects/20503-movie-pole
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \begin{Large}
+      Dziękujemy za wytrwałość!
+    \end{Large}
+  \end{center}
+\end{frame}
+
+\end{document}
